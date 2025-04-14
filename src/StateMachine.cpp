@@ -36,16 +36,8 @@ bool StateMachine::init(State* initialState, State* errorState)
     _currentState = initialState;
     _errorState = errorState;
 
-    try
-    {
-        _currentState->onEnter();
-        return true;
-    }
-    catch(...)
-    {
-        handleError(1,"Exception in initial state onEnter()");
-        return false;
-    }
+    _currentState->onEnter();
+    return true;
 }
 
 
@@ -99,27 +91,19 @@ bool StateMachine::changeState(State* newState)
         return false;
     }
 
-    try 
+    // exit current state
+    if (_currentState) 
     {
-        // exit current state
-        if (_currentState) 
-        {
-            _currentState->onExit();
-        }
-
-        //Save the previous state for return
-        _previousState = _currentState;
-        _currentState = newState;
-
-        // Enter the new state
-        _currentState->onEnter();
-        return true;
-    } 
-    catch (...) 
-    {
-        handleError(3, "Exception during state transition");
-        return false;
+        _currentState->onExit();
     }
+
+    //Save the previous state for return
+    _previousState = _currentState;
+    _currentState = newState;
+
+    // Enter the new state
+    _currentState->onEnter();
+    return true;
 }
 
 
