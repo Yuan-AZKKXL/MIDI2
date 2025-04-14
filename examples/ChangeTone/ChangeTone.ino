@@ -33,7 +33,7 @@
  */ 
  #define XIAO_TX 43
  #define XIAO_RX 44
- #define SERIAL Serial2
+ #define SERIAL Serial1
  /*
  Define the software serial port and its pins. If you need to use a software serial port
  this example uses a hardware serial port, so the software serial port is commented out.
