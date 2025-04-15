@@ -63,40 +63,37 @@
 #define STATE_1_LED_TIME 2000
 #define STATE_2_LED_TIME 500
 #define STATE_3_LED_TIME 100
+
 #ifdef __AVR__
     #include <SoftwareSerial.h>
     SoftwareSerial SSerial(2, 3); // RX, TX
-    #define COMSerial SSerial
-    #define ShowSerial Serial
-    //MP3Player<WT2003S<SoftwareSerial>> Mp3Player;
-    SAM2695Synth<SoftwareSerial> synth = SAM2695Synth<HardwareSerial>::getInstance();
+    #define COM_SERIAL SSerial
+    #define SHOW_SERIAL Serial
+    SAM2695Synth<SoftwareSerial> synth = SAM2695Synth<SoftwareSerial>::getInstance();
 #endif
 
 #if defined(ARDUINO_ARCH_RP2040) || defined(ARDUINO_ARCH_RP2350) ||  defined(ARDUINO_XIAO_RA4M1) 
     #include <SoftwareSerial.h>
     SoftwareSerial SSerial(D7, D6); // RX, TX
-    #define COMSerial SSerial
-    #define ShowSerial Serial
-
-    SAM2695Synth<SoftwareSerial> synth = SAM2695Synth<HardwareSerial>::getInstance();
+    #define COM_SERIAL SSerial
+    #define SHOW_SERIAL Serial
+    SAM2695Synth<SoftwareSerial> synth = SAM2695Synth<SoftwareSerial>::getInstance();
 #endif
 
 #if  defined(CONFIG_IDF_TARGET_ESP32C3) || defined(CONFIG_IDF_TARGET_ESP32C6) || defined(CONFIG_IDF_TARGET_ESP32S3)
     #define COM_SERIAL Serial0
     #define SHOW_SERIAL Serial
-
     SAM2695Synth<HardwareSerial> synth = SAM2695Synth<HardwareSerial>::getInstance();
 #endif
 
 #ifdef SEEED_XIAO_M0
-    #define COMSerial Serial1
-    #define ShowSerial Serial
-
-    SAM2695Synth<Uart> synth = SAM2695Synth<HardwareSerial>::getInstance();
+    #define COM_SERIAL Serial1
+    #define SHOW_SERIAL Serial
+    SAM2695Synth<Uart> synth = SAM2695Synth<Uart>::getInstance();
 #elif defined(ARDUINO_SAMD_VARIANT_COMPLIANCE)
-    #define COMSerial Serial1
-    #define ShowSerial SerialUSB
-    SAM2695Synth<Uart> synth = SAM2695Synth<HardwareSerial>::getInstance();
+    #define COM_SERIAL Serial1
+    #define SHOW_SERIAL SerialUSB
+    SAM2695Synth<Uart> synth = SAM2695Synth<Uart>::getInstance();
 #endif
 
 #if defined(CONFIG_IDF_TARGET_ESP32S3)
