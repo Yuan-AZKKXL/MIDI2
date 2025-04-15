@@ -16,10 +16,12 @@
 
 
 #ifdef __AVR__
+	#include <SoftwareSerial.h>
 	extern SAM2695Synth<SoftwareSerial> synth;
 #endif
 
 #if defined(ARDUINO_ARCH_RP2040) || defined(ARDUINO_ARCH_RP2350) ||  defined(ARDUINO_XIAO_RA4M1) 
+	#include <SoftwareSerial.h>
 	extern SAM2695Synth<SoftwareSerial> synth;
 #endif
 
