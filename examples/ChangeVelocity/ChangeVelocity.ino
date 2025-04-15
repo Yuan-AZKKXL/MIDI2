@@ -32,7 +32,7 @@
     SAM2695Synth<SoftwareSerial> synth = SAM2695Synth<SoftwareSerial>::getInstance();
 #endif
 
-#if  defined(CONFIG_IDF_TARGET_ESP32C3) || defined(CONFIG_IDF_TARGET_ESP32C6) || defined(CONFIG_IDF_TARGET_ESP32S3)
+#if  defined(CONFIG_IDF_TARGET_ESP32C3) || defined(CONFIG_IDF_TARGET_ESP32C6) || defined(CONFIG_IDF_TARGET_ESP32S3) || defined(ARDUINO_ARCH_NRF52)
     #define COM_SERIAL Serial0
     #define SHOW_SERIAL Serial
     SAM2695Synth<HardwareSerial> synth = SAM2695Synth<HardwareSerial>::getInstance();
