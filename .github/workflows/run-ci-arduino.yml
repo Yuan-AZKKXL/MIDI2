@@ -26,7 +26,6 @@ jobs:
       - name: Create a depend.list file
         run: |
           # eg: echo "<repo>" >> depend.list
-          echo "Yuan-AZKKXL/EspSoftwareSerial" >> depend.list
 
       - name: Create a ignore.list file
         run: |

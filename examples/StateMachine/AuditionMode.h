@@ -14,7 +14,7 @@
 // The maximum recording interval is set to 2s
 #define MaxTimeLimit 2000 
 
-extern SAM2695Synth synth;
+extern SAM2695Synth<HardwareSerial> synth;
 
 extern bool entryFlag;
 extern bool channel_1_on_off_flag;

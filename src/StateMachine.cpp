@@ -61,19 +61,10 @@ bool StateMachine::handleEvent(const Event* event)
         return false;
     }
 
-    try
-    {
-        _transitioningInProgress = true;
-        bool handled = _currentState->handleEvent(this,(Event*)event);
-        _transitioningInProgress = false;
-        return handled;
-    }
-    catch(...)
-    {
-        _transitioningInProgress = false;
-        handleError(2,"Exception in state handleEvent()");
-        return false;
-    }
+    _transitioningInProgress = true;
+    bool handled = _currentState->handleEvent(this,(Event*)event);
+    _transitioningInProgress = false;
+    return handled;
 }
 
 
