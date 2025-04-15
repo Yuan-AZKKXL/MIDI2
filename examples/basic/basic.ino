@@ -26,7 +26,7 @@
     SAM2695Synth<SoftwareSerial> synth = SAM2695Synth<SoftwareSerial>::getInstance();
 #endif
 
-#if  defined(CONFIG_IDF_TARGET_ESP32C3) || defined(CONFIG_IDF_TARGET_ESP32C6) || defined(CONFIG_IDF_TARGET_ESP32S3) || defined(ARDUINO_ARCH_NRF52)
+#if  defined(CONFIG_IDF_TARGET_ESP32C3) || defined(CONFIG_IDF_TARGET_ESP32C6) || defined(CONFIG_IDF_TARGET_ESP32S3)
     #define COM_SERIAL Serial0
     #define SHOW_SERIAL Serial
     SAM2695Synth<HardwareSerial> synth = SAM2695Synth<HardwareSerial>::getInstance();
@@ -39,6 +39,16 @@
 #elif defined(ARDUINO_SAMD_VARIANT_COMPLIANCE)
     #define COM_SERIAL Serial1
     #define SHOW_SERIAL SerialUSB
+    SAM2695Synth<Uart> synth = SAM2695Synth<Uart>::getInstance();
+#endif
+
+#if defined(NRF52840_XXAA)
+    #ifdef USE_TINYUSB
+    #include <Adafruit_TinyUSB.h>
+    #endif
+    #define COM_SERIAL Serial1
+    #define SHOW_SERIAL Serial
+
     SAM2695Synth<Uart> synth = SAM2695Synth<Uart>::getInstance();
 #endif
 
