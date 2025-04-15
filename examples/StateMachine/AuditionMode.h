@@ -27,7 +27,7 @@
 	extern SAM2695Synth<HardwareSerial> synth;
 #endif
 
-#ifdef defined(SEEED_XIAO_M0)
+#ifdef SEEED_XIAO_M0
 	extern SAM2695Synth<Uart> synth;
 #elif defined(ARDUINO_SAMD_VARIANT_COMPLIANCE)
 	extern SAM2695Synth<Uart> synth;
